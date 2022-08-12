@@ -1,0 +1,21 @@
+class Solution {
+    public boolean isPalindrome(ListNode head) {
+         ListNode slow = head, fast = head, prev = null;
+        while (fast != null && fast.next != null) {  // getting the middle node 
+            ListNode slowNext = slow.next;
+            fast = fast.next.next;
+            slow.next = prev;
+            prev = slow;
+            slow = slowNext;
+        }
+        if (fast != null && fast.next == null) slow = slow.next; // for odd cases 
+
+        while (slow != null && prev != null) {             //comparing the first half of the list with th secound half 
+            if (slow.val != prev.val) return false;
+            slow = slow.next;
+            prev = prev.next;
+        }
+        return true;
+    
+    }
+}
