@@ -1,0 +1,11 @@
+class Solution {
+    public ListNode removeElements(ListNode head, int val) {
+        if (head == null) return null; 
+        ListNode newHead = removeElements(head.next,val); 
+        if (head.val == val){
+            return newHead; 
+        } else {
+            head.next = newHead; 
+            return head;
+    }
+}}
