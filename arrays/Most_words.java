@@ -1,4 +1,3 @@
-package leetcode.arrays;
 
 public class Most_words {
     public int mostWordsFound(String[] sentences) {
@@ -10,5 +9,8 @@ public class Most_words {
             }
         }
         return sum;
+    }
+    public static void main(String[] args) {
+        
     }
 }
