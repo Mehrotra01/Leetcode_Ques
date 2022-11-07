@@ -5,7 +5,7 @@ public class Valid_parenthsis {
     public static void main(String[] args) {
         Scanner hm = new Scanner(System.in);
         String str = hm.next();
-        (str.toCharArray()));
+        solve(str.toCharArray());
         hm.close();
     }
 
