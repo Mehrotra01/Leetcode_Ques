@@ -1,0 +1,13 @@
+Number of Digits
+    iterative sol
+    recursive sol
+    Using log10(); 
+
+Trailing zeroes
+    ..
+
+Euclid Algo
+    Use for finding gcd
+    and it basically states that we 
+    if b is smaller than a, then
+    gcd(a,b) = gcd(a-b,b)
