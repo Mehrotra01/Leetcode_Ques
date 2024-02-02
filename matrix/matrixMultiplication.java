@@ -11,7 +11,7 @@ public class matrixMultiplication {
         int rows1 = sc.nextInt();
         System.out.println("Enter cols");
         int cols1 = sc.nextInt();
-        
+        sc.close();
         int mat1[][] = new int[rows1][cols1];
         int count =0;
         for(int i=0;i<rows1;i++){

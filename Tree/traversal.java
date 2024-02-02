@@ -6,21 +6,22 @@ public class traversal {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         BinaryTrees binaryTree = new BinaryTrees();
-
         System.out.println("Binary Tree Operations");
         System.out.println("1. Add Node");
         System.out.println("2. Delete Node");
         System.out.println("3. Print In-order Traversal ");
         System.out.println("4. Print Pre-order Traversal");
         System.out.println("5. Print Post-order Traversal");
-        System.out.println("6. Print Tree Structure");
-        System.out.println("7. Print Root Value");
+        System.out.println("6. Print Level-order Traversal");
+        System.out.println("7. Print Reverse Level-order Traversal:");
+        System.out.println("8. Print Tree Structure");
+        System.out.println("9. Print Root Value");
         System.out.println("0. Exit");
 
         binaryTree.BinaryTrees();
         int choice;
         do {
-            System.out.print("\nEnter your choice: ");
+            System.out.print("\nEnter the no. of Operation: ");
             choice = scanner.nextInt();
 
             switch (choice) {
@@ -50,12 +51,21 @@ public class traversal {
                     System.out.println();
                     break;
                 case 6:
+                    System.out.println("Level-order Traversal: ");
+                    binaryTree.levelOrderTraversal();
+                    break;
+                case 7:
+                    System.out.println("Reverse Level-order Traversal: ");
+                    binaryTree.reverseLevelOrder();
+                    System.out.println();
+                    break;
+                case 8:
                     System.out.println("Tree structure: ");
                     binaryTree.printTreeStructure();
                     System.out.println();
                     break;
-                case 7:
-                    System.out.println("Value of Root: " + BinaryTrees.root.data);
+                case 9:
+                    System.out.println("Value of Root Node: " + BinaryTrees.root.data);
                     System.out.println();
                     break;
                 case 0:

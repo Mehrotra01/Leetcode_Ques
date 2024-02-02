@@ -1,6 +1,9 @@
 package Tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
+import java.util.Stack;
 
 class TreeNode {
     int data;
@@ -133,12 +136,11 @@ class BinaryTrees {
         return minValue;
     }
 
-
-
     // All Traversal's
 
     // Function to perform in-order traversal (topological sort)
     public void inOrderTraversal() {
+        System.out.println("L N R");
         inOrderTraversalRecursive(root);
     }
     
@@ -149,9 +151,12 @@ class BinaryTrees {
             inOrderTraversalRecursive(root.right);
         }
     }
+    
     public void preOrderTraversal() {
+        System.out.println("N L R");
         preOrderTraversalRecursive(root);
     }
+
     private void preOrderTraversalRecursive(TreeNode root) {
         if (root != null) {
             System.out.print(root.data + " ");
@@ -159,9 +164,12 @@ class BinaryTrees {
             inOrderTraversalRecursive(root.right);
         }
     }
+    
     public void postOrderTraversal() {
+        System.out.println("L R N");
         postOrderTraversalRecursive(root);
     }
+
     private void postOrderTraversalRecursive(TreeNode root) {
         if (root != null) {
             inOrderTraversalRecursive(root.left);
@@ -169,6 +177,76 @@ class BinaryTrees {
             System.out.print(root.data + " ");
         }
     }
+
+    public void levelOrderTraversal() {
+        levelOrderTraversal(root);
+    }
+
+    private void levelOrderTraversal(TreeNode node) {
+        Queue<TreeNode> que = new LinkedList<>();
+        que.add(node);
+        que.add(null); // to show it like a traingle or tree
+
+        while (!que.isEmpty()) {
+            TreeNode temp = que.poll();
+
+            if (temp == null) {
+                System.out.println();
+                if (!que.isEmpty()) {
+                    que.add(null);
+                }
+            } else {
+                System.out.print(temp.data+" ");
+                if (temp.left != null) {
+                    que.add(temp.left);
+                }
+                if (temp.right != null) {
+                    que.add(temp.right);
+                }
+            }
+        }
+    }
+
+    public void reverseLevelOrder(){
+        reverseLevelOrder(root);
+    }
+    private void reverseLevelOrder(TreeNode root) {
+        if (root == null)
+            return;
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        Stack<TreeNode> stack = new Stack<>();
+
+        queue.add(root);
+        queue.add(null);
+
+        while (!queue.isEmpty()) {
+            TreeNode current = queue.poll();
+            
+            if (current == null) {
+                stack.push(null);
+                if (!queue.isEmpty()) {
+                    queue.add(null);
+                }
+            } else {
+                stack.push(current);
+            if (current.right != null)
+                queue.add(current.right);
+            if (current.left != null)
+                queue.add(current.left);
+            }
+        }
+
+        while (!stack.isEmpty()) {
+            TreeNode node = stack.pop();
+            if(node == null){
+                System.out.println();
+            }else{
+                System.out.print(node.data + " ");
+            }
+        }
+    }
+
 
     public void printTreeStructure() {
         System.out.println("Root\t2\t3\t4\t5\t6");
