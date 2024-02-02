@@ -1,0 +1,20 @@
+it's a  hierarchical type of data structure 
+as your can see in your computer you have drive in file explorer in then drives you have folders
+
+  Types of binary trees:
+
+  Full BT
+  complete BT
+  perfect BT
+  Balanced BT
+  Degenerate BT
+
+Traversal Technique
+
+    DFS
+    inorder - (left root right)
+    preorder - (root left right)
+    postorder - (left right root)
+
+    BFS
+    topographical sort
