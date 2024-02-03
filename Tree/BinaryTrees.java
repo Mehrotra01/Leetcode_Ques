@@ -80,7 +80,7 @@ class BinaryTrees {
         root = insertRec(root, value);
     }
 
-    private TreeNode insertRec(TreeNode root, int data) {
+    protected TreeNode insertRec(TreeNode root, int data) {
         if (root == null) {
             root = new TreeNode(data);
             return root;
@@ -100,7 +100,7 @@ class BinaryTrees {
         root = deleteNodeRecursive(root, value);
     }
 
-    private TreeNode deleteNodeRecursive(TreeNode root, int value) {
+    protected TreeNode deleteNodeRecursive(TreeNode root, int value) {
         if (root == null) {
             return root;
         }
@@ -127,13 +127,45 @@ class BinaryTrees {
         return root;
     }
 
-    private int minValue(TreeNode root) {
+    protected int minValue(TreeNode root) {
         int minValue = root.data;
         while (root.left != null) {
             minValue = root.left.data;
             root = root.left;
         }
         return minValue;
+    }
+
+    public void countLeafNode() {
+        System.out.println(countLeafNode(root));
+    }
+
+    protected int countLeafNode(TreeNode root) {
+        if (root == null) {return 0;}
+        if (root.left == null && root.right == null) {return 1;}
+        return countLeafNode(root.right) + countLeafNode(root.left);
+    }
+
+    public void heightOfTree() {
+        System.out.println(heightOfTree(root));
+    }
+
+    protected int heightOfTree(TreeNode root) {
+        int left = heightOfTree(root.left);
+        int right = heightOfTree(root.right);
+
+        int height = Math.max(left, right);
+
+        return height;
+    }
+
+    public void diameterOfTree() {
+        System.out.println(diameterOfTree(root));
+    }
+
+    protected int diameterOfTree(TreeNode root) {
+        int Diameter = 0;
+        return Diameter;
     }
 
     // All Traversal's
@@ -143,34 +175,34 @@ class BinaryTrees {
         System.out.println("L N R");
         inOrderTraversalRecursive(root);
     }
-    
-    private void inOrderTraversalRecursive(TreeNode root) {
+
+    protected void inOrderTraversalRecursive(TreeNode root) {
         if (root != null) {
             inOrderTraversalRecursive(root.left);
             System.out.print(root.data + " ");
             inOrderTraversalRecursive(root.right);
         }
     }
-    
+
     public void preOrderTraversal() {
         System.out.println("N L R");
         preOrderTraversalRecursive(root);
     }
 
-    private void preOrderTraversalRecursive(TreeNode root) {
+    protected void preOrderTraversalRecursive(TreeNode root) {
         if (root != null) {
             System.out.print(root.data + " ");
             inOrderTraversalRecursive(root.left);
             inOrderTraversalRecursive(root.right);
         }
     }
-    
+
     public void postOrderTraversal() {
         System.out.println("L R N");
         postOrderTraversalRecursive(root);
     }
 
-    private void postOrderTraversalRecursive(TreeNode root) {
+    protected void postOrderTraversalRecursive(TreeNode root) {
         if (root != null) {
             inOrderTraversalRecursive(root.left);
             inOrderTraversalRecursive(root.right);
@@ -182,7 +214,7 @@ class BinaryTrees {
         levelOrderTraversal(root);
     }
 
-    private void levelOrderTraversal(TreeNode node) {
+    protected void levelOrderTraversal(TreeNode node) {
         Queue<TreeNode> que = new LinkedList<>();
         que.add(node);
         que.add(null); // to show it like a traingle or tree
@@ -196,7 +228,7 @@ class BinaryTrees {
                     que.add(null);
                 }
             } else {
-                System.out.print(temp.data+" ");
+                System.out.print(temp.data + " ");
                 if (temp.left != null) {
                     que.add(temp.left);
                 }
@@ -207,10 +239,11 @@ class BinaryTrees {
         }
     }
 
-    public void reverseLevelOrder(){
+    public void reverseLevelOrder() {
         reverseLevelOrder(root);
     }
-    private void reverseLevelOrder(TreeNode root) {
+
+    protected void reverseLevelOrder(TreeNode root) {
         if (root == null)
             return;
 
@@ -222,7 +255,7 @@ class BinaryTrees {
 
         while (!queue.isEmpty()) {
             TreeNode current = queue.poll();
-            
+
             if (current == null) {
                 stack.push(null);
                 if (!queue.isEmpty()) {
@@ -230,23 +263,22 @@ class BinaryTrees {
                 }
             } else {
                 stack.push(current);
-            if (current.right != null)
-                queue.add(current.right);
-            if (current.left != null)
-                queue.add(current.left);
+                if (current.right != null)
+                    queue.add(current.right);
+                if (current.left != null)
+                    queue.add(current.left);
             }
         }
 
         while (!stack.isEmpty()) {
             TreeNode node = stack.pop();
-            if(node == null){
+            if (node == null) {
                 System.out.println();
-            }else{
+            } else {
                 System.out.print(node.data + " ");
             }
         }
     }
-
 
     public void printTreeStructure() {
         System.out.println("Root\t2\t3\t4\t5\t6");
@@ -254,7 +286,7 @@ class BinaryTrees {
         printTreeStructure(root, 0);
     }
 
-    private void printTreeStructure(TreeNode root, int level) {
+    protected void printTreeStructure(TreeNode root, int level) {
         if (root != null) {
             printTreeStructure(root.right, level + 1);
             for (int i = 0; i < level; i++) {

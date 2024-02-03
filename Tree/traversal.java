@@ -15,7 +15,10 @@ public class traversal {
         System.out.println("6. Print Level-order Traversal");
         System.out.println("7. Print Reverse Level-order Traversal:");
         System.out.println("8. Print Tree Structure");
-        System.out.println("9. Print Root Value");
+        System.out.println("9. Print Number of leaf Node");
+        System.out.println("10. Print Height of the tree");
+        System.out.println("11. Print Root Value");
+        System.out.println("12. Print Diameter of the Tree");
         System.out.println("0. Exit");
 
         binaryTree.BinaryTrees();
@@ -65,9 +68,21 @@ public class traversal {
                     System.out.println();
                     break;
                 case 9:
-                    System.out.println("Value of Root Node: " + BinaryTrees.root.data);
-                    System.out.println();
+                    System.out.print("Number of leaf Node: ");
+                    binaryTree.countLeafNode();
                     break;
+                case 10:
+                    System.out.print(" Height of the tree: ");
+                    binaryTree.heightOfTree();
+                    break;
+                case 11:
+                    System.out.println("Value of Root Node: " + BinaryTrees.root.data);
+                    break;
+                case 12:
+                    System.out.print("Diameter of the Tree: ");
+                    binaryTree.diameterOfTree();
+                    break;
+
                 case 0:
                     System.out.println("Exiting program....");
                     break;
