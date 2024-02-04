@@ -158,16 +158,38 @@ class BinaryTrees {
 
         return height;
     }
+    class treeHeight{
+        static int h;
+    }
 
     public void diameterOfTree() {
-        System.out.println(diameterOfTree(root));
+        // System.out.println(diameterOfTree(root));
+    treeHeight h = new treeHeight();
+    System.out.println(diameterOfTree(root, h));
     }
 
-    protected int diameterOfTree(TreeNode root) {
-        int Diameter = 0;
-        return Diameter;
-    }
+    // protected int diameterOfTree(TreeNode root) {
+    //     if(root ==null){return 0;}
 
+    //     int op1= diameterOfTree(root.left);
+    //     int op2 =diameterOfTree(root.right);
+    //     int op3 =heightOfTree(root.left)+1+heightOfTree(root.right);
+    //     int diameter = Math.max(op1,Math.max(op2,op3));
+    //     return diameter;
+    // } //but complexity of it's is n^2 cause we are calling height function as well
+
+    protected int diameterOfTree(TreeNode root,treeHeight h) {
+        treeHeight leftHeight=new treeHeight();
+        treeHeight rightHeight=new treeHeight();
+        if(root ==null){ treeHeight.h=0;return 0;}
+
+        int op1= diameterOfTree(root.left,leftHeight);
+        int op2 =diameterOfTree(root.right,rightHeight);
+
+        treeHeight.h=Math.max(leftHeight.h,rightHeight.h)+1;
+        return Math.max(leftHeight.h+rightHeight.h+1,Math.max(op1,op2));
+        
+    } // this have a complexity of o(n)
     // All Traversal's
 
     // Function to perform in-order traversal (topological sort)
