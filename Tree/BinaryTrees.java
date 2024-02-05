@@ -141,56 +141,69 @@ class BinaryTrees {
     }
 
     protected int countLeafNode(TreeNode root) {
-        if (root == null) {return 0;}
-        if (root.left == null && root.right == null) {return 1;}
+        if (root == null) {
+            return 0;
+        }
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
         return countLeafNode(root.right) + countLeafNode(root.left);
     }
 
     public void heightOfTree() {
-        System.out.println(heightOfTree(root));
+        System.out.println(
+                heightOfTree(root) + " (or it can be " + (heightOfTree(root) - 1) + " upon how you consider)");
     }
 
     protected int heightOfTree(TreeNode root) {
-        int left = heightOfTree(root.left);
-        int right = heightOfTree(root.right);
-
-        int height = Math.max(left, right);
-
-        return height;
+        if (root == null) {
+            return 0;
+        }
+        return 1 + Math.max(heightOfTree(root.left), heightOfTree(root.right));
     }
-    class treeHeight{
+
+    class treeHeight {
         static int h;
     }
 
     public void diameterOfTree() {
         // System.out.println(diameterOfTree(root));
-    treeHeight h = new treeHeight();
-    System.out.println(diameterOfTree(root, h));
+        if (root.left == null && root.right == null) {
+            System.out.println(1);
+            return;
+        }
+        treeHeight h = new treeHeight();
+        System.out.println(diameterOfTree(root, h));
+        return;
     }
 
     // protected int diameterOfTree(TreeNode root) {
-    //     if(root ==null){return 0;}
+    // if(root ==null){return 0;}
 
-    //     int op1= diameterOfTree(root.left);
-    //     int op2 =diameterOfTree(root.right);
-    //     int op3 =heightOfTree(root.left)+1+heightOfTree(root.right);
-    //     int diameter = Math.max(op1,Math.max(op2,op3));
-    //     return diameter;
-    // } //but complexity of it's is n^2 cause we are calling height function as well
+    // int op1= diameterOfTree(root.left);
+    // int op2 =diameterOfTree(root.right);
+    // int op3 =heightOfTree(root.left)+1+heightOfTree(root.right);
+    // int diameter = Math.max(op1,Math.max(op2,op3));
+    // return diameter;
+    // } //but complexity of it's is n^2 cause we are calling height function as
+    // well
 
-    protected int diameterOfTree(TreeNode root,treeHeight h) {
-        treeHeight leftHeight=new treeHeight();
-        treeHeight rightHeight=new treeHeight();
-        if(root ==null){ treeHeight.h=0;return 0;}
+    protected int diameterOfTree(TreeNode root, treeHeight h) {
+        treeHeight leftHeight = new treeHeight();
+        treeHeight rightHeight = new treeHeight();
+        if (root == null) {
+            treeHeight.h = 0;
+            return 0;
+        }
 
-        int op1= diameterOfTree(root.left,leftHeight);
-        int op2 =diameterOfTree(root.right,rightHeight);
+        int op1 = diameterOfTree(root.left, leftHeight);
+        int op2 = diameterOfTree(root.right, rightHeight);
 
-        treeHeight.h=Math.max(leftHeight.h,rightHeight.h)+1;
-        return Math.max(leftHeight.h+rightHeight.h+1,Math.max(op1,op2));
-        
+        treeHeight.h = Math.max(leftHeight.h, rightHeight.h) + 1;
+        return Math.max(leftHeight.h + rightHeight.h + 1, Math.max(op1, op2));
+
     } // this have a complexity of o(n)
-    // All Traversal's
+      // All Traversal's
 
     // Function to perform in-order traversal (topological sort)
     public void inOrderTraversal() {

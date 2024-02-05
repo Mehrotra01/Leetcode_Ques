@@ -1,13 +1,12 @@
 package Tree;
 
-import Tree.BinaryTrees.treeHeight;
 
 class Node{
     int data;
     Node left;
     Node right;
     Node(int d){
-        int data =d;
+        data =d;
         right=null;
         left = null;
 
@@ -23,6 +22,7 @@ public class diameterOfTree {
         height h = new height();
        System.out.println(diameterTree(root,h));
     }
+    @SuppressWarnings("static-access")
     protected int diameterTree(Node root, height h){
         height rightTree = new height();
         height leftTree = new height();
@@ -35,7 +35,7 @@ public class diameterOfTree {
         int op2=diameterTree(root.right, rightTree);
 
         height.h=Math.max(rightTree.h,leftTree.h)+1;
-        return Math.max(leftTree.h+rightTree.h+1,Math.max(op1, op2));
+        return Math.max(leftTree.h+height.h+1,Math.max(op1, op2));
     } //O(N) complexity
 
     // public void diameterOfTree() {
@@ -57,12 +57,8 @@ public class diameterOfTree {
     // }
 
     // protected int heightOfTree(TreeNode root) {
-    //     int left = heightOfTree(root.left);
-    //     int right = heightOfTree(root.right);
-
-    //     int height = Math.max(left, right);
-
-    //     return height;
+    //    if(root==null){return 0;}
+        // return 1+Math.max(heightOfTree(root.left), heightOfTree(root.right));
     // }
     public static void main(String[] args) {
         diameterOfTree tree = new diameterOfTree();
